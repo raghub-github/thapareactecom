@@ -3,18 +3,22 @@ import reducer from "../reducer/cartReducer";
 
 const CartContext = createContext();
 
-const getLocalCartData = () => {
-  let localCartData = localStorage.getItem("thapaCart");
-  if (localCartData === []) {
-    return [];
-  } else {
-    return JSON.parse(localCartData);
-  }
-};
+// const getLocalCartData = () => {
+//   let localCartData = localStorage.getItem("thapaCart");
+//   if (localCartData === []) {
+//     return [];
+//   } else {
+//     return JSON.parse(localCartData);
+//   }
+// };
+
+// replace with this code to fix the bug
+let getLocalCartData = JSON.parse(localStorage.getItem('userCartData')) ? JSON.parse(localStorage.getItem('userCartData')) : [];
 
 const initialState = {
   // cart: [],
-  cart: getLocalCartData(),
+  // cart: getLocalCartData(),
+  cart: getLocalCartData,
   total_item: "",
   total_price: "",
   shipping_fee: 50000,
